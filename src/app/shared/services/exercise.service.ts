@@ -5,6 +5,7 @@ import { Exercise } from './exercise.interface';
   providedIn: 'root',
 })
 export class ExerciseService {
+
   public exercises: Exercise[] = [
     {
       title: 'Supino Inclinado',
@@ -19,18 +20,16 @@ export class ExerciseService {
     },
   ];
 
-  constructor() {}
-
-  public getExercises(): Exercise[] {
+  public getElements(): Exercise[] {
     return this.exercises;
   }
 
-  public addExercise(exercise: Exercise): void {
+  public add(exercise: Exercise): void {
     this.exercises.push(exercise);
   }
 
-  public excludeExercise(exercise: Exercise): void {
-    const index = this.exercises.indexOf(exercise);
+  public exclude(element: Exercise): void {
+    const index = this.exercises.indexOf(element);
     this.exercises.splice(index, 1);
   }
 }

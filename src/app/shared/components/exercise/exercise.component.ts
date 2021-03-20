@@ -24,7 +24,7 @@ export class ExerciseComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.exercises = this.exerciseService.getExercises();
+    this.exercises = this.exerciseService.getElements();
   }
 
   public resetSelection(): void {
@@ -33,19 +33,20 @@ export class ExerciseComponent implements OnInit {
 
   public onSubmit(): void {
     if (this.exerciseForm.valid) {
-      this.exerciseService.addExercise(this.exerciseForm.value);
+      this.exerciseService.add(this.exerciseForm.value);
       this.exerciseForm.reset();
       this.exerciseForm.markAsUntouched();
     }
+    this.resetSelection();
   }
 
-  public selectExercise(exercise: Exercise): void {
-    this.selectedExercise = exercise;
+  public selectExercise(selected: Exercise): void {
+    this.selectedExercise = selected;
   }
 
-  public excludeExercise(): void {
+  public exclude(): void {
     if (this.selectedExercise) {
-      this.exerciseService.excludeExercise(this.selectedExercise);
+      this.exerciseService.exclude(this.selectedExercise);
     }
     this.resetSelection();
   }
