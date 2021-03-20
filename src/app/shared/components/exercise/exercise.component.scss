@@ -1,0 +1,15 @@
+.box {
+  display: flex;
+  flex-direction: row;
+  &__exercise {
+    margin-bottom: 1rem;
+    margin: 1rem;
+    &-actions {
+      display: flex;
+      flex-direction: column;
+      button {
+        margin-top: 1rem;
+      }
+    }
+  }
+}

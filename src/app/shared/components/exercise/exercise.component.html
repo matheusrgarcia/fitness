@@ -1,0 +1,49 @@
+<mat-card class="box">
+  <div class="box__exercise">
+    <h3>Exércicios</h3>
+    <mat-selection-list [multiple]="false">
+      <mat-list-option
+        *ngFor="let exercise of exercises"
+        (click)="selectExercise(exercise)"
+        [value]="exercise">
+        <span>{{ exercise.title }} - {{ exercise.description }}</span>
+        <mat-divider></mat-divider>
+      </mat-list-option>
+    </mat-selection-list>
+    <form
+      class="box__exercise-actions"
+      [formGroup]="exerciseForm"
+      (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <mat-label>Exercício</mat-label>
+        <input
+          matInput
+          id="title"
+          name="title"
+          formControlName="title"
+          type="text"/>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Descrição</mat-label>
+        <input
+          matInput
+          id="description"
+          name="description"
+          formControlName="description"
+          type="text"/>
+      </mat-form-field>
+      <div class="box__exercise-actions">
+        <button mat-raised-button color="primary" type="submit">
+          Adicionar
+        </button>
+        <button
+          mat-raised-button
+          color="secondary"
+          (click)="excludeExercise()"
+          type="submit">
+          Excluir
+        </button>
+      </div>
+    </form>
+  </div>
+</mat-card>
